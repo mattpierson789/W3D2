@@ -30,19 +30,17 @@ class Board
 
     def populate
     
-        num_cards = 0
-        while num_cards < total_cards
-            random_row = rand(0...@grid.length)
-            random_col = rand(0...@grid.length)
-            pos = [random_row,random_col]
-            if grid[pos] == 0
-                @grid[pos] = pair1
-                
-
-
-                
+        val = ((1...((@size ** 2) / 2)).to_a * 2).shuffle
+        @grid.each do |i|
+            @grid[i].each do |j|
+                self[[i, j]] = Card.new(val.pop)
+            end
         end
+    
+    end
 
+    def self.render(grid)
+        
     end
 
 end 
