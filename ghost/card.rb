@@ -1,19 +1,38 @@
 class Card
 
-  attr_reader :value, :state
+  attr_reader :value, :state, :true
 
-  def initialize(value, state)
-    @value = value
-    @state = state
+  def initialize
+    @value = (a...z).sample
+    @state =  false
+    @true  =  value            #False means face-down which is the default
 
   end
-
-  def flip(self)
+  
+  
+  def face_up?
     
-    if state == false
+    if @state == true
+         true 
+         return @value
+    else 
+        return false             
       
     end
     
   end
 
+def hide 
+
+    if self.face_up?
+
+        @value = "_"
+    end 
+end  
+
+  
+
 end
+
+card1 = Card.new(:R, true)
+  p card1.face_up?
