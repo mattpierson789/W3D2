@@ -4,9 +4,10 @@ require_relative "card.rb"
 
 class Board
 
-    def initialize(cards)
-        @grid = Array.new(4) {Array.new(4,0)}
-        @pairs = 
+    def initialize(size)        #4
+        @size = size 
+        @grid = Array.new(size) {Array.new(size,0)}
+        @pair1 = Card.new
 
 
     end 
@@ -28,13 +29,18 @@ class Board
     end
 
     def populate
-        total_cards = @grid.flatten.length
+    
         num_cards = 0
         while num_cards < total_cards
             random_row = rand(0...@grid.length)
             random_col = rand(0...@grid.length)
             pos = [random_row,random_col]
-            if self[pos] == 0
+            if grid[pos] == 0
+                @grid[pos] = pair1
+                
+
+
+                
         end
 
     end

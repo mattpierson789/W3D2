@@ -3,7 +3,7 @@ class Card
   attr_reader :value, :state, :true
 
   def initialize
-    @value = (a...z).sample
+    @value = value``
     @state =  false
     @true  =  value            #False means face-down which is the default
 
