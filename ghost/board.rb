@@ -6,8 +6,7 @@ class Board
 
     def initialize(size)        #4
         @size = size 
-        @grid = Array.new(size) {Array.new(size,0)}
-        @pair1 = Card.new
+        @grid = Array.new(size) {Array.new(size)}
 
 
     end 
@@ -29,18 +28,48 @@ class Board
     end
 
     def populate
-    
-        val = ((1...((@size ** 2) / 2)).to_a * 2).shuffle
-        @grid.each do |i|
-            @grid[i].each do |j|
-                self[[i, j]] = Card.new(val.pop)
-            end
+        pairs = (@grid.length ** 2) / 2 # calculate the number of card pairs needed
+        values = (1..pairs).to_a * 2 # create an array of values for each card pair
+        values.shuffle! # shuffle the array so that the pairs are randomized
+      
+        # iterate over each cell in the grid and assign a new card with a value from the values array
+        @grid.each_with_index do |row, i|
+          row.each_with_index do |cell, j|
+            @grid[i][j] = Card.new(values.pop)
+          end
         end
-    
-    end
+      end
+      
 
-    def self.render(grid)
-        
-    end
+      def render
+        @grid.each.with_index do |row,i|
+            row.each.with_index do |card,i|
+                count = 0
+                if count == @size
+                    count = 1
+                    puts "\n"
+                    print card.to_s
+                    print " "
+                else
+                    print card.to_s
+                    print " "
+                    count += 1
+                end
+            end 
+        end
+      end
+    
+    
+
+    # def won?
+
+    #     @grid.each do |i|
+    #         i.each do |j|
+    #           if j == "_"
+    #             return false 
+    #         end 
+    #     end 
+    #     return true 
+    # end 
 
 end 

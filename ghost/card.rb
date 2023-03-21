@@ -1,4 +1,8 @@
+require_relative "board.rb"
+
 class Card
+
+
 
   attr_reader :value, :state, :true
 
@@ -8,6 +12,12 @@ class Card
     @true  =  value            #False means face-down which is the default
 
   end
+
+  def to_s
+
+    @value 
+    
+  end 
   
   
   def face_up?
@@ -28,11 +38,9 @@ def hide
 
         @value = "_"
     end 
-end  
+end 
 
-  
+end 
 
-end
 
-card1 = Card.new(:R, true)
-  p card1.face_up?
+
